@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config.database import engine, Base
-from app.api.routes import auth, reading, writing, quests, dashboard, settings
+from app.api.routes import auth, reading, writing, quests, dashboard, settings, staking
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -28,6 +28,7 @@ app.include_router(writing.router, prefix="/api")
 app.include_router(quests.router, prefix="/api")
 app.include_router(dashboard.router, prefix="/api")
 app.include_router(settings.router, prefix="/api")
+app.include_router(staking.router, prefix="/api")
 
 
 @app.get("/")

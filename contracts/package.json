@@ -1,0 +1,20 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "This smart contract enables commitment-based staking for the Web3 education platform. Users can stake testnet tokens to commit to learning goals (e.g., 7-day streaks). The backend provides signed attestations for milestone completion. Successful commitments earn rewards; failed ones contribute to a scholarship pool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.27.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6"
+  }
+}

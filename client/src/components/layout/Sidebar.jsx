@@ -2,36 +2,41 @@ import { NavLink } from 'react-router-dom'
 
 const navItems = [
   {
-    path: '/dashboard',
-    icon: '📊',
-    label: 'Dashboard',
+    path: "/dashboard",
+    icon: "📊",
+    label: "Dashboard",
   },
   {
-    path: '/reading',
-    icon: '📖',
-    label: 'Reading Practice',
+    path: "/staking",
+    icon: "💎",
+    label: "Staking",
   },
   {
-    path: '/writing',
-    icon: '✍️',
-    label: 'Writing Coach',
+    path: "/reading",
+    icon: "📖",
+    label: "Reading Practice",
   },
   {
-    path: '/quests',
-    icon: '🎯',
-    label: 'Quests',
+    path: "/writing",
+    icon: "✍️",
+    label: "Writing Coach",
   },
   {
-    path: '/badges',
-    icon: '🏆',
-    label: 'Badges',
+    path: "/quests",
+    icon: "🎯",
+    label: "Quests",
   },
   {
-    path: '/settings',
-    icon: '⚙️',
-    label: 'Settings',
+    path: "/badges",
+    icon: "🏆",
+    label: "Badges",
   },
-]
+  {
+    path: "/settings",
+    icon: "⚙️",
+    label: "Settings",
+  },
+];
 
 function Sidebar() {
   return (

@@ -8,9 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@thirdweb-dev/react": "^4.9.4",
+    "@thirdweb-dev/sdk": "^4.0.99",
     "axios": "^1.6.2",
+    "ethers": "^5.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-is": "^19.2.0",
     "react-router-dom": "^6.20.0",
     "recharts": "^3.4.1",
     "zustand": "^4.4.7"

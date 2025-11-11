@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../stores/authStore'
+import WalletButton from '../web3/WalletButton'
 
 function Header() {
   const navigate = useNavigate()
@@ -21,6 +22,9 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-4">
+          {/* Web3 Wallet Connection */}
+          <WalletButton />
+
           {/* Notifications */}
           <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
             <span className="text-xl">🔔</span>

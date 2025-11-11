@@ -18,6 +18,17 @@ class Settings(BaseSettings):
     debug: bool = True
     port: int = 8001
 
+    # Web3 Configuration
+    web3_rpc_url: str = "https://rpc-amoy.polygon.technology/"
+    web3_chain_id: int = 80002
+    staking_contract_address: str = "0x0000000000000000000000000000000000000000"
+    attestation_private_key: str = "your-attestation-private-key-here"
+    scholarship_pool_address: str = "0x0000000000000000000000000000000000000000"
+
+    # Thirdweb Configuration
+    thirdweb_client_id: Optional[str] = None
+    thirdweb_secret_key: Optional[str] = None
+
     class Config:
         env_file = ".env"
         case_sensitive = False
