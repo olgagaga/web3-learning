@@ -12,6 +12,16 @@ const navItems = [
     label: "Staking",
   },
   {
+    path: "/tutoring",
+    icon: "👥",
+    label: "Peer Tutoring",
+  },
+  {
+    path: "/scholarship",
+    icon: "💸",
+    label: "Scholarship",
+  },
+  {
     path: "/reading",
     icon: "📖",
     label: "Reading Practice",

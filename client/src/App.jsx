@@ -9,6 +9,8 @@ import QuestsPage from './pages/QuestsPage'
 import BadgesPage from './pages/BadgesPage'
 import SettingsPage from './pages/SettingsPage'
 import StakingPage from './pages/StakingPage'
+import TutoringPage from './pages/TutoringPage'
+import ScholarshipPage from './pages/ScholarshipPage'
 import MainLayout from './components/layout/MainLayout'
 
 function PrivateRoute({ children }) {
@@ -35,6 +37,8 @@ function App() {
                   <Route path="/quests" element={<QuestsPage />} />
                   <Route path="/badges" element={<BadgesPage />} />
                   <Route path="/staking" element={<StakingPage />} />
+                  <Route path="/tutoring" element={<TutoringPage />} />
+                  <Route path="/scholarship" element={<ScholarshipPage />} />
                   <Route path="/settings" element={<SettingsPage />} />
                 </Routes>
               </MainLayout>
