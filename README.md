@@ -1,14 +1,20 @@
 # Web3 Education Platform
 
-An AI-guided microlearning platform for IELTS/TOEFL test preparation with Web3 achievements and gamification.
+An AI-guided IELTS/TOEFL test preparation platform with Web3 commitment staking, gamification, and blockchain-verified achievements.
 
-## Features
+**For detailed project status and deployment instructions, see [PROJECT_STATUS.md](PROJECT_STATUS.md)**
 
-- **Adaptive Reading Practice**: Personalized reading comprehension exercises with difficulty adjustment
-- **AI Writing Coach**: Essay feedback powered by Gemini AI with rubric-based scoring
-- **Gamification**: Quests, streaks, boss challenges, and rewards
-- **Web3 Badges**: Verifiable skill credentials as soulbound tokens
-- **Progress Analytics**: Detailed tracking of learning progress and skill mastery
+## Quick Overview
+
+### Working Features
+- ✅ **Adaptive Reading Practice** - 18 questions, instant feedback
+- ✅ **AI Writing Coach** - Gemini-powered essay scoring
+- ✅ **Quests & Badges** - Gamification with automatic achievement tracking
+- ✅ **Progress Analytics** - Detailed learning statistics
+
+### In Progress (Priority)
+- 🟡 **Web3 Commitment Staking** - Stake tokens on learning goals (backend complete, needs deployment)
+- 🟡 **Accountability Pods** - Team-based commitments (backend complete, needs deployment)
 
 ## Tech Stack
 
@@ -50,211 +56,83 @@ web3-edu-platform/
     └── database/          # Database schema and migrations
 ```
 
-## Setup Instructions
+## Quick Start
 
-### Prerequisites
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for detailed setup instructions.
 
-- Node.js 18+ and npm
-- Python 3.10+
-- PostgreSQL 14+
-- Gemini API key
-
-### Database Setup
-
-1. Install PostgreSQL and create a database:
+### TL;DR
 
 ```bash
-sudo -u postgres psql
-CREATE DATABASE web3_edu_platform;
-\q
-```
-
-2. Run the schema to create tables:
-
-```bash
+# 1. Database
+sudo -u postgres psql -c "CREATE DATABASE web3_edu_platform;"
 sudo -u postgres psql -d web3_edu_platform -f server/database/schema.sql
-```
 
-### Backend Setup
-
-1. Navigate to the server directory:
-
-```bash
-cd server
-```
-
-2. Create a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-
-```bash
+# 2. Backend
+cd server && python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-```
-
-4. Create a `.env` file based on `.env.example`:
-
-```bash
-cp .env.example .env
-```
-
-5. Update the `.env` file with your configuration:
-
-```env
-DATABASE_URL=postgresql://user:password@localhost:5432/web3_edu_platform
-SECRET_KEY=your-secret-key-here
-GEMINI_API_KEY=your-gemini-api-key
-```
-
-6. Seed the practice data:
-
-```bash
-# Seed reading practice data (4 passages, 18 questions)
+cp .env.example .env  # Edit with your config
 python -m database.seed_reading_data
-
-# Seed writing prompts (8 essay prompts)
 python -m database.seed_writing_data
-```
+python -m database.seed_quest_data
+python main.py  # Runs on http://localhost:8001
 
-7. Start the backend server:
-
-```bash
-python main.py
-```
-
-The API will be available at http://localhost:8000
-
-### Frontend Setup
-
-1. Navigate to the client directory:
-
-```bash
+# 3. Frontend
 cd client
+npm install --legacy-peer-deps
+cp .env.example .env  # Edit with your config
+npm run dev  # Runs on http://localhost:3000
+
+# 4. Deploy Contract (Priority)
+npx thirdweb deploy contracts/CommitmentStaking.sol
+# See contracts/README.md for details
 ```
 
-2. Install dependencies:
+## Documentation
 
-```bash
-npm install
-```
+- **[PROJECT_STATUS.md](PROJECT_STATUS.md)** - Current status, priorities, and deployment guide
+- **[STATUS.md](STATUS.md)** - Detailed Web3 staking feature status
+- **[READING_MODULE.md](READING_MODULE.md)** - Reading practice documentation
+- **[WRITING_MODULE.md](WRITING_MODULE.md)** - Writing coach documentation
+- **[BADGES_MODULE.md](BADGES_MODULE.md)** - Badges system documentation
+- **[contracts/README.md](contracts/README.md)** - Smart contract deployment guide
 
-3. Start the development server:
+## Key API Endpoints
 
-```bash
-npm run dev
-```
+Full API documentation available at: http://localhost:8001/docs (when backend is running)
 
-The frontend will be available at http://localhost:3000
-
-## Available Pages
-
-- **/login** - User login
-- **/register** - User registration
-- **/dashboard** - Overview and quick actions
-- **/reading** - Adaptive reading practice ✅ **Fully Implemented**
-- **/writing** - AI-powered writing coach ✅ **Fully Implemented**
-- **/quests** - Gamified challenges
-- **/badges** - Web3 achievements
-- **/progress** - Learning analytics
-- **/settings** - User preferences
-
-## Implemented Modules
-
-### ✅ Reading Practice
-- 4 passages across difficulty levels (easy, medium, hard)
-- 18 comprehension questions with explanations
-- Adaptive difficulty algorithm (targets 70-80% success)
-- Instant feedback with skill tracking
-- Progress analytics
-
-See [READING_MODULE.md](./READING_MODULE.md) for detailed documentation.
-
-### ✅ Writing Coach
-- 8 essay prompts across difficulties
-- AI-powered scoring with Gemini API (with mock fallback)
-- IELTS/TOEFL rubric-based feedback (4 criteria)
-- Revision system with improvement tracking
-- Detailed suggestions and outline recommendations
-
-See [WRITING_MODULE.md](./WRITING_MODULE.md) for detailed documentation.
-
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register new user
+**Core Features:**
+- `POST /api/auth/register` - Register user
 - `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
-- `POST /api/auth/logout` - Logout user
+- `GET /api/reading/next` - Get next reading item
+- `POST /api/reading/submit` - Submit answer
+- `POST /api/writing/submit` - Submit essay
+- `GET /api/quests/active` - Get active quests
+- `GET /api/quests/badges` - Get user badges
 
-### Reading Practice
-- `GET /api/reading/next` - Get next adaptive reading item
-- `GET /api/reading/items` - List all reading items
-- `GET /api/reading/items/{id}` - Get specific reading item
-- `POST /api/reading/submit` - Submit answer and get feedback
-- `GET /api/reading/stats` - Get user reading statistics
+**Web3 Staking (Priority):**
+- `POST /api/staking/wallet/connect` - Connect wallet
+- `POST /api/staking/commitments` - Create commitment
+- `GET /api/staking/commitments` - List commitments
+- `POST /api/staking/commitments/{id}/attest` - Generate attestation
+- `POST /api/staking/commitments/{id}/claim` - Claim reward
+- `GET /api/staking/dashboard` - User dashboard
 
-### Writing Coach
-- `GET /api/writing/prompts` - List essay prompts
-- `GET /api/writing/prompts/{id}` - Get specific prompt
-- `POST /api/writing/submit` - Submit essay for AI feedback
-- `GET /api/writing/essays` - List user essays
-- `GET /api/writing/essays/{id}` - Get specific essay with feedback
-- `GET /api/writing/essays/{id}/revisions` - Get essay revisions
-- `GET /api/writing/stats` - Get user writing statistics
+## Current Priority
 
-### Future Endpoints
-- Quest management endpoints
-- Badge minting and retrieval endpoints
-- Advanced analytics endpoints
+**Deploy smart contracts and test web3 features**
 
-## Color Palette
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for:
+- Step-by-step deployment instructions
+- Testing guide
+- Troubleshooting tips
+- Environment configuration
 
-The application uses Claude's orange color palette:
+## Resources
 
-- **Primary**: #FF7F4D
-- **Primary Dark**: #E6652A
-- **Primary Light**: #FFD4B8
-- **Full palette**: claude-50 through claude-900
-
-## Development
-
-### Running Both Servers
-
-Terminal 1 (Backend):
-```bash
-cd server
-source venv/bin/activate
-python main.py
-```
-
-Terminal 2 (Frontend):
-```bash
-cd client
-npm run dev
-```
-
-### Building for Production
-
-Frontend:
-```bash
-cd client
-npm run build
-```
-
-Backend is production-ready with uvicorn.
-
-## Next Steps
-
-1. Implement reading practice module with adaptive difficulty
-2. Integrate Gemini AI for essay scoring and feedback
-3. Build quest system with rewards
-4. Implement Web3 badge minting (Thirdweb + Polygon)
-5. Add detailed analytics and progress tracking
-6. Implement boss challenges and timed tests
+- **Thirdweb Dashboard:** https://thirdweb.com/dashboard
+- **Sepolia Faucet:** https://sepoliafaucet.com/ or https://faucet.sepolia.dev/
+- **Sepolia Explorer:** https://sepolia.etherscan.io/
+- **API Documentation:** http://localhost:8001/docs
 
 ## License
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This smart contract enables commitment-based staking for the Web3 education platform. Users can stake testnet tokens to commit to learning goals (e.g., 7-day streaks). The backend provides signed attestations for milestone completion. Successful commitments earn rewards; failed ones contribute to a scholarship pool.
+This smart contract enables commitment-based staking for the Web3 education platform. Users can stake Sepolia ETH to commit to learning goals (e.g., 7-day streaks). The backend provides signed attestations for milestone completion. Successful commitments earn rewards; failed ones contribute to a scholarship pool.
 
 ## Features
 
@@ -33,7 +33,7 @@ This smart contract enables commitment-based staking for the Web3 education plat
 
 ## Deployment Guide
 
-### Option 1: Deploy via Thirdweb Dashboard (Recommended for Hackathon)
+### Option 1: Deploy via Thirdweb Dashboard (Recommended)
 
 1. **Install Thirdweb CLI**:
    ```bash
@@ -51,20 +51,22 @@ This smart contract enables commitment-based staking for the Web3 education plat
    ```
 
 4. **Configure on Dashboard**:
-   - Select **Polygon Amoy** testnet
+   - Select **Sepolia** testnet
    - Set constructor parameters:
      - `_attestationAuthority`: Your backend wallet address (will sign attestations)
      - `_scholarshipPool`: Treasury wallet address (receives penalties)
    - Click "Deploy Now"
 
-5. **Get Testnet MATIC**:
-   - Visit [Polygon Amoy Faucet](https://faucet.polygon.technology/)
+5. **Get Sepolia ETH**:
+   - Visit [Sepolia Faucet](https://sepoliafaucet.com/) or [Faucet Sepolia](https://faucet.sepolia.dev/)
    - Enter your wallet address
-   - Receive testnet MATIC for gas fees
+   - Receive Sepolia ETH for gas fees
 
 6. **Save Contract Address**:
    - Copy the deployed contract address
-   - Add to `.env` file: `VITE_STAKING_CONTRACT_ADDRESS=<address>`
+   - Add to `.env` files:
+     - `server/.env`: `STAKING_CONTRACT_ADDRESS=<address>`
+     - `client/.env`: `VITE_STAKING_CONTRACT_ADDRESS=<address>`
 
 ### Option 2: Deploy via Hardhat
 
@@ -82,8 +84,8 @@ This smart contract enables commitment-based staking for the Web3 education plat
    module.exports = {
      solidity: "0.8.20",
      networks: {
-       polygonAmoy: {
-         url: "https://rpc-amoy.polygon.technology/",
+       sepolia: {
+         url: "https://rpc.sepolia.org/",
          accounts: [process.env.DEPLOYER_PRIVATE_KEY],
        },
      },
@@ -119,7 +121,7 @@ This smart contract enables commitment-based staking for the Web3 education plat
 
 4. **Deploy**:
    ```bash
-   npx hardhat run scripts/deploy.js --network polygonAmoy
+   npx hardhat run scripts/deploy.js --network sepolia
    ```
 
 ## Contract Functions
@@ -208,10 +210,10 @@ def sign_attestation(commitment_id: int, user_address: str, progress: int, attes
 
 ## Testing
 
-### Test on Polygon Amoy
+### Test on Sepolia
 
-1. **Get Testnet MATIC**: Use [Polygon Faucet](https://faucet.polygon.technology/)
-2. **Create Commitment**: Call `createCommitment(7, 7)` with 0.1 test MATIC
+1. **Get Sepolia ETH**: Use [Sepolia Faucet](https://sepoliafaucet.com/) or [Faucet Sepolia](https://faucet.sepolia.dev/)
+2. **Create Commitment**: Call `createCommitment(7, 7)` with 0.01 Sepolia ETH
 3. **Complete Activities**: Use the learning platform
 4. **Update Progress**: Backend calls `updateProgress` with signed attestation
 5. **Claim Reward**: Call `claimReward` to receive stake + bonus
@@ -219,7 +221,7 @@ def sign_attestation(commitment_id: int, user_address: str, progress: int, attes
 ### Expected Flow
 
 ```
-User creates commitment -> Stake locked in contract
+User creates commitment -> Stake (ETH) locked in contract
   ↓
 User completes daily activities
   ↓
@@ -229,7 +231,7 @@ Backend calls updateProgress() with signature
   ↓
 Progress reaches target -> Commitment marked completed
   ↓
-User calls claimReward() -> Receives 1.1x stake
+User calls claimReward() -> Receives 1.1x stake (ETH)
 ```
 
 ## Security Features
@@ -239,7 +241,7 @@ User calls claimReward() -> Receives 1.1x stake
 - **Ownable**: Admin functions restricted to owner
 - **Signature Verification**: Only authorized backend can update progress
 - **Used Attestation Tracking**: Prevents replay attacks
-- **Stake Limits**: 0.01-1.0 ether range prevents large losses
+- **Stake Limits**: 0.01-1.0 ETH range prevents large losses
 
 ## Gas Optimization
 
@@ -260,7 +262,7 @@ For production, consider:
 ## Support
 
 - **Thirdweb Docs**: https://portal.thirdweb.com/
-- **Polygon Amoy Explorer**: https://amoy.polygonscan.com/
+- **Sepolia Explorer**: https://sepolia.etherscan.io/
 - **OpenZeppelin Contracts**: https://docs.openzeppelin.com/contracts/
 
 ## License

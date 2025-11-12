@@ -28,7 +28,7 @@
 
 ### Configuration ✅
 - [x] Web3 dependencies installed (web3, eth-account)
-- [x] Environment variables configured
+- [x] Environment variables configured (Sepolia testnet)
 - [x] Settings class updated with Web3 fields
 - [x] Database migration completed
 
@@ -77,7 +77,7 @@
 - [x] Environment variables added to `.env`
 - [x] Thirdweb client ID placeholder
 - [x] Contract address placeholder
-- [x] Chain configuration (Polygon Amoy)
+- [x] Chain configuration (Sepolia)
 
 ### Code Examples ✅
 - [x] ThirdwebProvider setup code provided
@@ -121,7 +121,7 @@ npx thirdweb deploy contracts/CommitmentStaking.sol
 **Requirements:**
 - Create Thirdweb account
 - Get client ID
-- Deploy to Polygon Amoy
+- Deploy to Sepolia
 - Save contract address
 
 #### 2. Configure Environment (~5 minutes) 🟡
@@ -150,9 +150,9 @@ Update both `server/.env` and `client/.env`:
 **Follow:** `client/FRONTEND_QUICKSTART.md` for step-by-step guide
 
 #### 4. Test End-to-End (~30 minutes) 🔴
-- [ ] Get testnet MATIC from faucet
+- [ ] Get Sepolia ETH from faucet
 - [ ] Connect wallet
-- [ ] Create commitment (0.01 MATIC)
+- [ ] Create commitment (0.01 ETH)
 - [ ] Complete activities (reading/writing)
 - [ ] Generate attestation
 - [ ] Update progress on-chain
@@ -206,7 +206,7 @@ npm run dev
 
 ### For Smart Contract Deployment:
 1. Thirdweb account and client ID
-2. Wallet with testnet MATIC (from faucet)
+2. Wallet with Sepolia ETH (from faucet)
 3. Backend wallet address (for attestation authority)
 4. Treasury wallet address (for scholarship pool)
 
@@ -326,8 +326,8 @@ PGPASSWORD=postgres psql -U postgres -d web3_edu_platform -f database/migrations
 ## 📞 **Resources**
 
 - Thirdweb Dashboard: https://thirdweb.com/dashboard
-- Polygon Amoy Faucet: https://faucet.polygon.technology/
-- Polygon Amoy Explorer: https://amoy.polygonscan.com/
+- Sepolia Faucet: https://sepoliafaucet.com/ or https://faucet.sepolia.dev/
+- Sepolia Explorer: https://sepolia.etherscan.io/
 - FastAPI Docs (when running): http://localhost:8001/docs
 
 ---

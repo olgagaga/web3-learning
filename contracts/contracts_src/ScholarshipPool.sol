@@ -140,7 +140,7 @@ contract ScholarshipPool is Ownable, ReentrancyGuard, Pausable {
     /**
      * @dev Donate to current round
      */
-    function donate(uint256 _roundId) external payable roundActive(_roundId) nonReentrant {
+    function donate(uint256 _roundId) public payable roundActive(_roundId) nonReentrant {
         require(msg.value > 0, "Donation must be > 0");
 
         Round storage round = rounds[_roundId];

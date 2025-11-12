@@ -14,8 +14,19 @@ function StakingCard({ onStake }) {
       return
     }
 
-    if (!amount || parseFloat(amount) <= 0) {
+    const amountNum = parseFloat(amount)
+    if (!amount || amountNum <= 0) {
       alert('Please enter a valid stake amount')
+      return
+    }
+
+    if (amountNum < 0.01) {
+      alert('Minimum stake amount is 0.01 ETH')
+      return
+    }
+
+    if (amountNum > 1.0) {
+      alert('Maximum stake amount is 1.0 ETH')
       return
     }
 
@@ -59,8 +70,9 @@ function StakingCard({ onStake }) {
           </label>
           <input
             type="number"
-            step="0.001"
-            min="0"
+            step="0.01"
+            min="0.01"
+            max="1.0"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="0.01"
@@ -68,7 +80,7 @@ function StakingCard({ onStake }) {
             disabled={loading}
           />
           <p className="text-xs text-gray-500 mt-1">
-            Minimum: 0.001 ETH
+            Min: 0.01 ETH | Max: 1.0 ETH
           </p>
         </div>
 
