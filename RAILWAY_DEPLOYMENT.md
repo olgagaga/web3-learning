@@ -181,6 +181,15 @@ git push origin main
 3. Ensure `DATABASE_URL` is correctly linked
 4. Check Python dependencies in `requirements.txt`
 
+### Python version compatibility error (pydantic build failure):
+The project is configured to use Python 3.12 in `server/nixpacks.toml` for compatibility with `pydantic==2.5.0`. If you see build errors related to pydantic-core:
+1. Ensure `server/nixpacks.toml` specifies `nixPkgs = ["python312"]`
+2. Alternative: Upgrade to newer pydantic version:
+   ```
+   pip install pydantic==2.10.0 pydantic-settings==2.6.1 --upgrade
+   pip freeze > server/requirements.txt
+   ```
+
 ### Frontend can't connect to backend:
 1. Verify `VITE_API_URL` points to correct backend URL
 2. Check backend `ALLOWED_ORIGINS` includes frontend URL
