@@ -12,6 +12,8 @@
 
 Check it out: https://frontend-production-57f1.up.railway.app/login
 
+[![Watch the demo]](https://youtu.be/8g9gzV46izA)
+
 ## 🌟 Overview
 
 **Web3 Education Platform** is a next-generation test preparation platform that combines the power of AI-driven personalized learning with blockchain-based commitment mechanisms to help students achieve their IELTS/TOEFL goals. By leveraging crypto-economic incentives, we solve the #1 problem in online education: **lack of accountability and motivation**.
