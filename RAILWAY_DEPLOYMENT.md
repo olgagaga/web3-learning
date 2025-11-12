@@ -48,10 +48,10 @@ git push origin main
 
 1. Click **"+ New"** → **"GitHub Repo"**
 2. Select your repository again
-3. Configure the service:
+3. **IMPORTANT**: Configure the service:
    - **Service Name**: `backend` or `api`
-   - **Root Directory**: `/server`
-   - Railway will auto-detect Python and use nixpacks
+   - **Root Directory**: `server` (without leading slash)
+   - Railway will auto-detect Python 3.12 from `.python-version` file
 
 4. Add environment variables (click on the service → **Variables** tab):
    ```
@@ -83,9 +83,9 @@ git push origin main
 
 1. Click **"+ New"** → **"GitHub Repo"**
 2. Select your repository again
-3. Configure the service:
+3. **IMPORTANT**: Configure the service:
    - **Service Name**: `frontend` or `client`
-   - **Root Directory**: `/client`
+   - **Root Directory**: `client` (without leading slash)
 
 4. Add environment variables:
    ```
@@ -182,12 +182,24 @@ git push origin main
 4. Check Python dependencies in `requirements.txt`
 
 ### Python version compatibility error (pydantic build failure):
-The project is configured to use Python 3.12 in `server/nixpacks.toml` for compatibility with `pydantic==2.5.0`. If you see build errors related to pydantic-core:
-1. Ensure `server/nixpacks.toml` specifies `nixPkgs = ["python312"]`
-2. Alternative: Upgrade to newer pydantic version:
-   ```
+The project uses Python 3.12 via `server/.python-version` file for compatibility with `pydantic==2.5.0`. If you see pydantic-core build errors:
+
+1. **Verify Root Directory is set correctly:**
+   - In Railway service settings, ensure Root Directory is `server` (not `/server`)
+   - This allows Railway to detect the `.python-version` file
+
+2. **Check the deployment logs:**
+   - Look for "Found CPython 3.12" (correct) vs "Found CPython 3.13" (wrong)
+   - If it shows 3.13, the `.python-version` file isn't being detected
+
+3. **Alternative: Upgrade pydantic** (if you prefer Python 3.13):
+   ```bash
+   cd server
    pip install pydantic==2.10.0 pydantic-settings==2.6.1 --upgrade
-   pip freeze > server/requirements.txt
+   pip freeze > requirements.txt
+   git add requirements.txt .python-version
+   git commit -m "Upgrade pydantic for Python 3.13"
+   git push
    ```
 
 ### Frontend can't connect to backend:
