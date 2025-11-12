@@ -10,6 +10,8 @@
 
 ---
 
+Check it out: https://frontend-production-57f1.up.railway.app/login
+
 ## 🌟 Overview
 
 **Web3 Education Platform** is a next-generation test preparation platform that combines the power of AI-driven personalized learning with blockchain-based commitment mechanisms to help students achieve their IELTS/TOEFL goals. By leveraging crypto-economic incentives, we solve the #1 problem in online education: **lack of accountability and motivation**.
@@ -260,13 +262,13 @@ This project was developed with significant assistance from **Claude Code**, Ant
 
 ### How Claude Code Helped Us
 
-#### 🏗️ **Architecture & Setup** ($8 worth of usage)
+#### 🏗️ **Architecture & Setup**
 - **Project Structure**: Designed scalable monorepo structure with client/server separation
 - **Tech Stack Selection**: Recommended optimal combination of FastAPI + React + PostgreSQL
 - **Configuration Files**: Generated production-ready config files (vite.config.js, railway.json, .env templates)
 - **Database Schema**: Designed normalized schema for users, reading, writing, quests, and Web3 features
 
-#### ⛓️ **Web3 Integration** ($12 worth of usage)
+#### ⛓️ **Web3 Integration**
 - **Smart Contract Development**: Wrote and reviewed Solidity contracts for:
   - Commitment staking with milestone-based rewards
   - Accountability pods with team mechanics
@@ -279,7 +281,7 @@ This project was developed with significant assistance from **Claude Code**, Ant
   - Attestation generation with cryptographic signatures
 - **Frontend Integration**: Implemented Thirdweb SDK integration for seamless wallet connections
 
-#### 🚀 **Deployment & DevOps** ($8 worth of usage)
+#### 🚀 **Deployment & DevOps**
 - **Railway Deployment**:
   - Debugged Python version compatibility (pydantic + Python 3.13 issues)
   - Fixed missing dependencies (setuptools, email-validator)
@@ -291,7 +293,7 @@ This project was developed with significant assistance from **Claude Code**, Ant
   - Generated package-lock.json for reproducible builds
   - Wrote comprehensive deployment documentation
 
-#### 🐛 **Debugging & Problem Solving** ($4 worth of usage)
+#### 🐛 **Debugging & Problem Solving**
 - **Dependency Resolution**: Fixed 5+ dependency conflicts during deployment
 - **API Integration**: Debugged CORS issues, authentication flow, and API endpoints
 - **Error Handling**: Added robust error handling and logging throughout the stack
@@ -411,7 +413,7 @@ web3-edu-platform/
 
 Full interactive API documentation available at:
 - **Local**: http://localhost:8000/docs
-- **Production**: https://your-backend.railway.app/docs
+- **Production**: https://api-production-3f92.up.railway.app/docs
 
 ### Key Endpoints
 
@@ -463,41 +465,9 @@ GET  /api/dashboard           # Get user dashboard with stats
 
 ---
 
-## 🧪 Testing
-
-### Backend Tests
-```bash
-cd server
-pytest tests/ -v --cov=app
-```
-
-### Frontend Tests
-```bash
-cd client
-npm run test
-```
-
-### Smart Contract Tests
-```bash
-cd contracts
-npx hardhat test
-npx hardhat coverage
-```
-
-### E2E Tests
-```bash
-# Install Playwright
-npm install -D @playwright/test
-
-# Run E2E tests
-npm run test:e2e
-```
-
----
-
 ## 🛣️ Roadmap
 
-### ✅ Phase 1: Core Features (Completed)
+### ✅ Phase 1: Core Features 
 - [x] User authentication and authorization
 - [x] Reading comprehension practice with 18+ passages
 - [x] AI-powered essay scoring with Gemini
@@ -505,7 +475,7 @@ npm run test:e2e
 - [x] Progress tracking and analytics
 - [x] Responsive UI with Tailwind CSS
 
-### 🚧 Phase 2: Web3 Integration (In Progress)
+### 🚧 Phase 2: Web3 Integration
 - [x] Smart contract development (Solidity)
 - [x] Backend Web3 service layer
 - [x] Wallet connection (Thirdweb)
@@ -514,7 +484,6 @@ npm run test:e2e
 - [ ] End-to-end testing with real transactions
 
 ### 📅 Phase 3: Advanced Features (Planned)
-- [ ] Mobile app (React Native)
 - [ ] Video lessons and interactive content
 - [ ] AI-powered speaking practice (voice recognition)
 - [ ] Live peer-to-peer tutoring sessions
@@ -523,9 +492,9 @@ npm run test:e2e
 - [ ] Social features (study groups, leaderboards)
 - [ ] NFT certificates for course completion
 
-### 🚀 Phase 4: Scale & Optimization (Future)
+### 🚀 Phase 4: Scale & Optimization
 - [ ] Performance optimization (Redis caching, CDN)
-- [ ] Advanced AI features (GPT-4 integration)
+- [ ] Advanced AI features
 - [ ] Institutional partnerships (test centers, universities)
 - [ ] Fiat on-ramp integration
 - [ ] Governance token ($EDU) for platform decisions
@@ -585,46 +554,27 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 📞 Contact & Links
 
-- **Demo**: [https://frontend-production-57f1.up.railway.app/login](https://your-demo-url.railway.app)
-- **GitHub**: [https://github.com/yourusername/web3-edu-platform](https://github.com/yourusername/web3-edu-platform)
-- **Documentation**: [Full Docs](https://your-docs-url.com)
-- **Email**: your.email@example.com
-- **Twitter**: [@YourHandle](https://twitter.com/yourhandle)
-- **Discord**: [Join our community](https://discord.gg/yourinvite)
+- **Demo**: [https://frontend-production-57f1.up.railway.app/login](https://frontend-production-57f1.up.railway.app/login)
+- **GitHub**: [https://github.com/olgagaga/web3-edu-platform](https://github.com/olgagaga/web3-edu-platform)
+- **Documentation**: [Full Docs](https://api-production-3f92.up.railway.app/docs)
+- **Email**: okuzmic1@jh.edu
 
 ---
 
 ## 🏆 Hackathon Submission
 
-This project was built for [Hackathon Name] with the goal of revolutionizing online education through Web3 technology and AI-powered personalization.
-
-### Judges' Quick Links
-
-- **Live Demo**: [Frontend URL]
-- **API Playground**: [Backend URL]/docs
-- **Smart Contracts**: [Etherscan/Sepolia]
-- **Pitch Deck**: [Link to slides]
-- **Demo Video**: [YouTube/Loom link]
-
-### Key Highlights for Evaluation
-
-1. **Innovation**: First platform combining AI tutoring with crypto-economic accountability
-2. **Technical Complexity**: Full-stack Web3 app with smart contracts, AI integration, and production deployment
-3. **Impact**: Addresses real problem in $5B+ online education market
-4. **Execution**: Fully functional MVP with 40+ API endpoints, 4 smart contracts, and polished UI
-5. **Scalability**: Architecture designed for millions of users
-6. **Open Source**: MIT licensed for community growth
+This project was built for Claude Code Student Hackathon with the goal of revolutionizing online education through Web3 technology and AI-powered personalization.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by [Your Name/Team]**
+**Built with ❤️ by A!**
 
 *Powered by AI • Secured by Blockchain • Driven by Education*
 
 ⭐ **Star this repo if you found it interesting!** ⭐
 
-[Demo](https://your-demo-url.railway.app) • [Docs](RAILWAY_DEPLOYMENT.md) • [Contracts](contracts/README.md) • [Report Bug](https://github.com/yourusername/web3-edu-platform/issues) • [Request Feature](https://github.com/yourusername/web3-edu-platform/issues)
+[Demo]([https://your-demo-url.railway.app](https://frontend-production-57f1.up.railway.app/dashboard)) • [Docs](RAILWAY_DEPLOYMENT.md) • [Contracts](contracts/README.md) • [Report Bug](https://github.com/olgagaga/web3-edu-platform/issues) • [Request Feature](https://github.com/olgagaga/web3-edu-platform/issues)
 
 </div>
